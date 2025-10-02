@@ -11,13 +11,21 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "nativewind": "4.1.21",
-    "react-native-reanimated": "~3.17.4",
-    "react-native-safe-area-context": "5.4.0",
+    "@expo/vector-icons": "^14.1.0",
+    "@react-navigation/bottom-tabs": "^7.4.7",
+    "@react-navigation/core": "^7.12.4",
+    "@react-navigation/native": "^7.1.17",
+    "@react-navigation/native-stack": "^7.3.26",
     "expo": "~53.0.6",
     "expo-status-bar": "~2.2.3",
+    "nativewind": "4.1.21",
     "react": "19.0.0",
-    "react-native": "0.79.5"
+    "react-native": "0.79.5",
+    "react-native-gesture-handler": "~2.24.0",
+    "react-native-get-random-values": "~1.11.0",
+    "react-native-reanimated": "~3.17.4",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "~4.11.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -30,6 +38,6 @@
     "tailwindcss": "^3.4.0",
     "typescript": "~5.8.3"
   },
-  "main": "expo-router/entry",
+  "main": "index.js",
   "private": true
 }
