@@ -1,8 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./App.{js,ts,tsx}', './components/**/*.{js,ts,tsx}'],
-  darkMode: "class",
-  presets: [require('nativewind/preset')],
+  content: [
+    "./App.{js,jsx,ts,tsx}",
+    "./screens/**/*.{js,jsx,ts,tsx}",
+    "./navigations/**/*.{js,jsx,ts,tsx}",
+    "./context/**/*.{js,jsx,ts,tsx}",
+  ],
+  presets: [require("nativewind/preset")],
+  darkMode: "class", // 👈 REQUIRED for manual dark/light toggling
   theme: {
     extend: {},
   },

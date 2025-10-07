@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons, FontAwesome5, Feather, Ionicons } from '@expo/vector-icons';
 
@@ -6,14 +6,15 @@ import Dashboard from '../screens/Dashboard';
 import Users from '../screens/Users';
 import Expense from '../screens/Expense';
 import Statistics from '../screens/Statistics';
-import { Pressable, Text, useColorScheme, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import Categories from 'screens/Categories';
 import { useNavigation } from '@react-navigation/core';
-
+import { useTheme } from '../context/ThemeContext';
 export default function AppNavigator() {
   const navigation = useNavigation();
   const Tab = createBottomTabNavigator();
-  const [colorScheme, setColorScheme] = useColorScheme();
+  const { theme, colors, toggleTheme } = useTheme();
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -22,7 +23,7 @@ export default function AppNavigator() {
         tabBarActiveTintColor: '#fff',
         tabBarInactiveTintColor: '#6b7280',
         tabBarStyle: {
-          backgroundColor: '#0f172a',
+          backgroundColor: colors.card,
           borderRadius: 30,
           margin: 10,
           position: 'absolute',
@@ -40,13 +41,16 @@ export default function AppNavigator() {
         options={{
           headerShown: true,
           headerTitle: '',
+          headerStyle: {
+            backgroundColor: colors.card
+          },
           headerLeft: () => (
             <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 10 }}>
               <Pressable onPress={() => navigation.navigate('users')}>
                 <Feather name="menu" size={24} color="#374151" />
               </Pressable>
 
-              <Text style={{ marginLeft: 8, fontSize: 18, fontWeight: 'bold', color: '#111827' }}>
+              <Text style={{ marginLeft: 8, fontSize: 18, fontWeight: 'bold', color: colors.text }}>
                 Dashboard
               </Text>
             </View>
@@ -54,7 +58,14 @@ export default function AppNavigator() {
           headerRight: () => (
             <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 15 }}>
               {/* Moon icon */}
-              <Ionicons name="moon-outline" size={22} color="#6b7280" style={{ marginRight: 20 }} />
+              <Pressable onPress={toggleTheme}>
+                <Ionicons
+                  name={theme === "dark" ? "sunny-outline" : "moon-outline"}
+                  size={22}
+                  color={theme === "dark" ? "#facc15" : "#6b7280"}
+                  style={{ marginRight: 20 }}
+                />
+              </Pressable>
 
               {/* Notification bell with badge */}
               <View>
