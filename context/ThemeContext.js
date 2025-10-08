@@ -7,17 +7,26 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const { setColorScheme } = useColorScheme();
-  const [theme, setTheme] = useState("dark"); // ✅ Always start with dark
+  const [theme, setTheme] = useState("dark"); // ✅ always start dark
 
   useEffect(() => {
     (async () => {
       try {
+        // Try to load saved theme
         const savedTheme = await AsyncStorage.getItem("theme");
-        const initialTheme = savedTheme || "dark"; // ✅ Fallback to dark
-        setTheme(initialTheme);
-        setColorScheme(initialTheme);
+
+        if (savedTheme) {
+          setTheme(savedTheme);
+          setColorScheme(savedTheme);
+        } else {
+          // ✅ Start dark if nothing saved
+          setTheme("dark");
+          setColorScheme("dark");
+          await AsyncStorage.setItem("theme", "dark");
+        }
       } catch (error) {
         console.warn("Error loading theme:", error);
+        setTheme("dark");
         setColorScheme("dark");
       }
     })();

@@ -10,7 +10,7 @@ import { Pressable, Text, View } from 'react-native';
 import Categories from 'screens/Categories';
 import { useNavigation } from '@react-navigation/core';
 import { useTheme } from '../context/ThemeContext';
-export default function AppNavigator() {
+export default function TabNavigator() {
   const navigation = useNavigation();
   const Tab = createBottomTabNavigator();
   const { theme, colors, toggleTheme } = useTheme();
@@ -23,12 +23,7 @@ export default function AppNavigator() {
         tabBarActiveTintColor: '#fff',
         tabBarInactiveTintColor: '#6b7280',
         tabBarStyle: {
-          backgroundColor: colors.card,
-          borderRadius: 30,
-          margin: 10,
-          position: 'absolute',
-          height: 70,
-          paddingBottom: 10,
+          backgroundColor: "#1E293B",
         },
         tabBarLabelStyle: {
           fontSize: 12,
@@ -47,7 +42,7 @@ export default function AppNavigator() {
           headerLeft: () => (
             <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 10 }}>
               <Pressable onPress={() => navigation.navigate('users')}>
-                <Feather name="menu" size={24} color="#374151" />
+                <Feather name="menu" size={24} color= {colors.text} />
               </Pressable>
 
               <Text style={{ marginLeft: 8, fontSize: 18, fontWeight: 'bold', color: colors.text }}>
@@ -69,13 +64,13 @@ export default function AppNavigator() {
 
               {/* Notification bell with badge */}
               <View>
-                <Ionicons name="notifications-outline" size={24} color="#6b7280" />
+                <Ionicons name="notifications-outline" size={24} color= {colors.text}/>
                 <View
                   style={{
                     position: 'absolute',
                     top: -5,
                     right: -5,
-                    backgroundColor: '#0f172a',
+                    backgroundColor: colors.primary,
                     borderRadius: 10,
                     width: 18,
                     height: 18,

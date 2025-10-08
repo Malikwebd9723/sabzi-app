@@ -6,6 +6,9 @@ export const lightTheme = {
   border: "#E5E7EB",
   primary: "#0F172A",
   accent: "#2563EB",
+  grey: "#EFF2F9",
+  success: "#3BB67C",
+  error: "#FF0000",
 };
 
 export const darkTheme = {
@@ -16,4 +19,7 @@ export const darkTheme = {
   border: "#334155",
   primary: "#2563EB",
   accent: "#60A5FA",
+  grey: "#2F3742",
+  success: "#22C55E",
+  error: "#EF4444",
 };

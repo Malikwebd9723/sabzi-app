@@ -3,12 +3,12 @@ import { View, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigator from "navigations/RootNavigator";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
-
+import './global.css'
 function ThemedApp() {
   const { theme, colors } = useTheme();
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.background }}>
+    <View className="flex-1">
       <StatusBar
         backgroundColor={colors.background}
         barStyle={theme === "dark" ? "light-content" : "dark-content"}
