@@ -1,11 +1,14 @@
-import DataTable from 'components/DataTable';
+// import DataTable from 'components/DataTable';
 import { useTheme } from 'context/ThemeContext';
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
+import GlobalDataTable from 'components/GlobalDataTable';
+
 export default function Dashboard() {
   const { colors, theme } = useTheme();
+
   const items = [
     { name: 'Apple', orders: 5, total: 22, picked: 10, pending: 12 },
     { name: 'Mangos', orders: 3, total: 29, picked: 6, pending: 23 },
@@ -16,11 +19,13 @@ export default function Dashboard() {
 
   const columns = [
     { key: 'name', label: 'Name' },
-    { key: 'orders', label: 'Orders' },
-    { key: 'total', label: 'Total' },
-    { key: 'picked', label: 'Picked' },
-    { key: 'pending', label: 'Pending' },
+    { key: 'orders', label: 'Orders', numeric: true },
+    { key: 'total', label: 'Total', numeric: true },
+    { key: 'picked', label: 'Picked', numeric: true },
+    { key: 'pending', label: 'Pending', numeric: true },
   ];
+
+
 
   const orderItems = [
     { name: 'Org name', items: 5, payment: 'PAID', paymentDate: '(on app)', amount: '$675.00' },
@@ -131,9 +136,9 @@ export default function Dashboard() {
           </View>
         </View>
       </View>
-      <DataTable title="Items to Pick" columns={columns} data={items} />
-      <DataTable title="Recent Orders" columns={orderColumns} data={orderItems} />
-      <DataTable title="Recent Transactions" columns={transactionColumns} data={transactionItems} />
+      <GlobalDataTable title="Items to Pick" columns={columns} items={items} />
+      <GlobalDataTable title="Recent Orders" columns={orderColumns} items={orderItems} />
+      <GlobalDataTable title="Recent Transactions" columns={transactionColumns} items={transactionItems} />
     </ScrollView>
   );
 }

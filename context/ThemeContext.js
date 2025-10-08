@@ -7,7 +7,7 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const { setColorScheme } = useColorScheme();
-  const [theme, setTheme] = useState("dark"); // ✅ always start dark
+  const [theme, setTheme] = useState("light"); // ✅ always start dark
 
   useEffect(() => {
     (async () => {
@@ -19,15 +19,14 @@ export const ThemeProvider = ({ children }) => {
           setTheme(savedTheme);
           setColorScheme(savedTheme);
         } else {
-          // ✅ Start dark if nothing saved
-          setTheme("dark");
-          setColorScheme("dark");
-          await AsyncStorage.setItem("theme", "dark");
+          setTheme("light");
+          setColorScheme("light");
+          await AsyncStorage.setItem("theme", "light");
         }
       } catch (error) {
         console.warn("Error loading theme:", error);
-        setTheme("dark");
-        setColorScheme("dark");
+        setTheme("light");
+        setColorScheme("light");
       }
     })();
   }, []);
