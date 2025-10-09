@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons, FontAwesome5, Feather, Ionicons } from '@expo/vector-icons';
 
-import Dashboard from '../screens/Dashboard';
-import Users from '../screens/Users';
-import Expense from '../screens/Expense';
-import Statistics from '../screens/Statistics';
+import Dashboard from '../screens/admin/Dashboard';
+import Users from '../screens/admin/Users';
+import Expense from '../screens/admin/Expense';
+import Statistics from '../screens/admin/Statistics';
 import { Pressable, Text, View } from 'react-native';
-import Categories from 'screens/Categories';
+import Categories from 'screens/admin/Categories';
 import { useNavigation } from '@react-navigation/core';
 import { useTheme } from '../context/ThemeContext';
 export default function TabNavigator() {

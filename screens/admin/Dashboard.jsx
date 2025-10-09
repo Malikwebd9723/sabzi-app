@@ -41,10 +41,10 @@ export default function Dashboard() {
 
   // Recent Transactions Table
   const transactionItems = [
-    { name: 'Usman', date: '13 Feb, 25', status: 'Paid', payment: '$3,432.00' },
-    { name: 'Maaz', date: '13 Feb, 25', status: 'paid', payment: '$3,432.00' },
-    { name: 'Usman', date: '13 Feb, 25', status: 'credit', payment: '$3,432.00' },
-    { name: 'Maaz', date: '13 Feb, 25', status: 'paid', payment: '$3,432.00' },
+    { name: 'Usman', date: '13 Feb, 25', status: 'PAID', payment: '$3,432.00' },
+    { name: 'Maaz', date: '13 Feb, 25', status: 'PAID', payment: '$3,432.00' },
+    { name: 'Usman', date: '13 Feb, 25', status: 'CREDIT', payment: '$3,432.00' },
+    { name: 'Maaz', date: '13 Feb, 25', status: 'PAID', payment: '$3,432.00' },
   ];
 
   const transactionColumns = [

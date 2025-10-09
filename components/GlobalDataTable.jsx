@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
-import { DataTable } from "react-native-paper";
-import { useTheme } from "context/ThemeContext";
+import React, { useEffect, useState } from 'react';
+import { View, Text } from 'react-native';
+import { DataTable } from 'react-native-paper';
+import { useTheme } from 'context/ThemeContext';
 
 export default function GlobalDataTable({ title, columns, items }) {
   const { colors, theme } = useTheme(); // get active theme
@@ -14,15 +14,14 @@ export default function GlobalDataTable({ title, columns, items }) {
 
   useEffect(() => {
     setPage(0);
-  }, [itemsPerPage, theme]); 
+  }, [itemsPerPage, theme]);
 
   return (
     <View
       key={theme}
-      className="rounded-2xl p-2 my-1 shadow-md"
-      style={{ backgroundColor: colors.card }}
-    >
-      <Text className="font-bold text-xl mb-3" style={{ color: colors.text }}>
+      className="my-1 rounded-2xl p-2 shadow-md"
+      style={{ backgroundColor: colors.card }}>
+      <Text className="mb-3 text-xl font-bold" style={{ color: colors.text }}>
         {title}
       </Text>
 
@@ -33,14 +32,18 @@ export default function GlobalDataTable({ title, columns, items }) {
             backgroundColor: colors.card,
             borderBottomWidth: 1,
             borderColor: colors.border,
-          }}
-        >
+          }}>
           {columns.map((col) => (
             <DataTable.Title
               key={col.key}
               numeric={col.numeric}
-              textStyle={{flex:1, color: colors.text, fontWeight: "600",textAlign: 'left', fontWeight:"bold" }}
-            >
+              textStyle={{
+                flex: 1,
+                color: colors.text,
+                fontWeight: '600',
+                textAlign: 'left',
+                fontWeight: 'bold',
+              }}>
               {col.label}
             </DataTable.Title>
           ))}
@@ -51,22 +54,19 @@ export default function GlobalDataTable({ title, columns, items }) {
           <DataTable.Row
             key={`${index}-${theme}`} // re-render on theme change
             style={{
-              backgroundColor:
-                index % 2 === 0 ? colors.card : colors.grey, // alternate rows
-            }}
-          >
+              backgroundColor: index % 2 === 0 ? colors.card : colors.grey, // alternate rows
+            }}>
             {columns.map((col) => (
               <DataTable.Cell
                 key={col.key}
                 textStyle={{
                   color:
-                    col.key === "pending" && item.pending > 0
-                      ? "#ef4444" // Tailwind red-500
-                      : col.key === "picked"
-                      ? "#22c55e" // Tailwind green-500
-                      : colors.text,
-                }}
-              >
+                    col.key === 'status' && item.status === 'PAID'
+                      ? colors.success
+                      : col.key === 'status' && item.status === 'CREDIT'
+                        ? colors.error
+                        : colors.text,
+                }}>
                 {item[col.key]}
               </DataTable.Cell>
             ))}
@@ -89,7 +89,7 @@ export default function GlobalDataTable({ title, columns, items }) {
               text: colors.text,
               primary: colors.primary,
               surface: colors.card,
-              backdrop: "transparent",
+              backdrop: 'transparent',
             },
           }}
         />
