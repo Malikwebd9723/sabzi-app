@@ -148,7 +148,57 @@ export default function TabNavigator() {
         name="Users"
         component={Users}
         options={{
-          tabBarIcon: ({ color, size }) => <FontAwesome5 name="user" color={color} size={size} />,
+          headerShown: true,
+          headerTitle: '',
+          headerStyle: {
+            backgroundColor: colors.card
+          },
+          headerLeft: () => (
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 10 }}>
+              <Pressable onPress={() => navigation.navigate('users')}>
+                <Feather name="menu" size={24} color={colors.text} />
+              </Pressable>
+
+              <Text style={{ marginLeft: 8, fontSize: 18, fontWeight: 'bold', color: colors.text }}>
+                Users
+              </Text>
+            </View>
+          ),
+          headerRight: () => (
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 15 }}>
+              {/* Moon icon */}
+              <Pressable onPress={toggleTheme}>
+                <Ionicons
+                  name={theme === "dark" ? "sunny-outline" : "moon-outline"}
+                  size={22}
+                  color={theme === "dark" ? "#facc15" : "#6b7280"}
+                  style={{ marginRight: 20 }}
+                />
+              </Pressable>
+
+              {/* Notification bell with badge */}
+              <View>
+                <Ionicons name="notifications-outline" size={24} color={colors.text} />
+                <View
+                  style={{
+                    position: 'absolute',
+                    top: -5,
+                    right: -5,
+                    backgroundColor: colors.primary,
+                    borderRadius: 10,
+                    width: 18,
+                    height: 18,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Text style={{ color: 'white', fontSize: 10, fontWeight: 'bold' }}>3</Text>
+                </View>
+              </View>
+            </View>
+          ),
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="user" color={color} size={size} />
+          ),
         }}
       />
       <Tab.Screen

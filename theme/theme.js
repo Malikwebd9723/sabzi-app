@@ -17,7 +17,7 @@ export const darkTheme = {
   text: "#F9FAFB",
   subtext: "#9CA3AF",
   border: "#334155",
-  primary: "#2563EB",
+  primary: "#6B7280",
   accent: "#60A5FA",
   grey: "#2F3742",
   success: "#22C55E",
