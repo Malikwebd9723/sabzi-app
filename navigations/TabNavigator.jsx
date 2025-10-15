@@ -41,7 +41,7 @@ export default function TabNavigator() {
           },
           headerLeft: () => (
             <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 10 }}>
-              <Pressable onPress={() => navigation.navigate('users')}>
+              <Pressable onPress={() => navigation.navigate('login')}>
                 <Feather name="menu" size={24} color={colors.text} />
               </Pressable>
 

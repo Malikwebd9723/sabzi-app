@@ -54,7 +54,7 @@ export default function Dashboard() {
     { key: 'payment', label: 'Payment' },
   ];
   return (
-    <ScrollView className="flex-1 px-1" style={{ backgroundColor: colors.background }}>
+    <ScrollView className="flex-1 px-2" style={{ backgroundColor: colors.background }}>
       {/* Top Card Section */}
       <View className="flex-1 py-2">
         {/* Top Stats Card */}

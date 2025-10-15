@@ -35,12 +35,18 @@ export default function Dashboard() {
   ];
 
   const monthlySales = [
-    { value: 40, label: 'Jan' },
-    { value: 65, label: 'Mar' },
+    { value: 10, label: 'Jan' },
+    { value: 30, label: 'Feb' },
+    { value: 45, label: 'Mar' },
+    { value: 65, label: 'Apr' },
     { value: 50, label: 'May' },
+    { value: 40, label: 'June' },
     { value: 80, label: 'Jul' },
+    { value: 70, label: 'Aug' },
     { value: 90, label: 'Sep' },
+    { value: 100, label: 'Oct' },
     { value: 75, label: 'Nov' },
+    { value: 100, label: 'Dec' },
   ];
   const monthlyRevenue = [
     { value: 120, label: "Jan" },
@@ -139,7 +145,7 @@ export default function Dashboard() {
 
       {/* Line Chart - Sales */}
       <View
-        className="rounded-2xl p-4 mb-4"
+        className="rounded-2xl p-4 mb-4 overflow-hidden"
         style={{ backgroundColor: colors.card }}
       >
         <Text className="font-semibold mb-2" style={{ color: colors.text }}>
@@ -151,6 +157,7 @@ export default function Dashboard() {
         </View>
 
         <LineChart
+          animated={false}
           data={monthlySales}
           curved
           height={150}
@@ -172,7 +179,7 @@ export default function Dashboard() {
 
       {/* Bar Chart - Revenue */}
       <View
-        className="rounded-2xl p-4 mb-4"
+        className="rounded-2xl p-4 mb-4 overflow-hidden"
         style={{ backgroundColor: colors.card }}
       >
         <Text className="font-semibold mb-2" style={{ color: colors.text }}>
@@ -180,6 +187,7 @@ export default function Dashboard() {
         </Text>
         <Text style={{ color: colors.text, marginBottom: 5 }}>$5,425.00</Text>
         <BarChart
+          animated={false}
           data={monthlyRevenue}
           barWidth={22}
           frontColor={colors.primary}
@@ -213,14 +221,16 @@ export default function Dashboard() {
                 resizeMode="cover"
               />
               <View className="ml-3">
-                <Text style={{ color: colors.text, fontWeight: "600" }}>
-                  {user.name}{" "}
+                <View className="flex-row items-center">
+                  <Text style={{ color: colors.text, fontWeight: "600" }}>
+                    {user.name}{" "}
+                  </Text>
                   {user.isNew && (
                     <Text className="ml-2 text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: colors.primary, color: '#fff' }}>
                       New
                     </Text>
                   )}
-                </Text>
+                </View>
                 <Text className="text-gray-500 text-sm">{user.email}</Text>
               </View>
             </View>
@@ -244,6 +254,7 @@ export default function Dashboard() {
             animate={false}
             innerRadius={55}
             data={data}
+            innerCircleColor={colors.card}
             centerLabelComponent={() => (
               <Text style={{ color: colors.text, fontWeight: 'bold', fontSize: 18 }}>
                 {progress}%

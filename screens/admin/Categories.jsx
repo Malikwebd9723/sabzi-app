@@ -103,19 +103,22 @@ export default function Categories() {
         <Ionicons name="search" size={20} color={colors.text} />
         <TextInput
           placeholder="Search"
-          placeholderTextColor="#9CA3AF"
+          placeholderTextColor= {colors.text}
           value={search}
           onChangeText={handleSearch}
           className="flex-1 ml-2 text-base"
           style={{ color: colors.text }}
         />
+        
         <Pressable
           onPress={() => {
             Alert.alert("Add Category", "Functionality to add a new category.");
           }}
-        >
-          <Ionicons name="add-circle-outline" size={22} color={colors.primary} />
-        </Pressable>
+                  className="w-10 h-10 rounded-full items-center justify-center"
+                  style={{ backgroundColor: colors.primary }}
+                >
+                  <Ionicons name="add" size={24} color="#fff" />
+                </Pressable>
       </View>
 
       {/* Category Grid or Skeleton */}
