@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { DataTable } from 'react-native-paper';
 import { useTheme } from 'context/ThemeContext';
-
-export default function GlobalDataTable({ title, columns, items }) {
+import { FontAwesome6 } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
+export default function GlobalDataTable({ title, columns, items, route }) {
   const { colors, theme } = useTheme(); // get active theme
-  const itemsPerPageList = [2, 3, 5];
+  const itemsPerPageList = [10, 20, 30, 40, 50]; // options for items per page
   const [page, setPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageList[0]);
-
+  const navigation = useNavigation();
   const from = page * itemsPerPage;
   const to = Math.min((page + 1) * itemsPerPage, items.length);
 
@@ -21,10 +22,12 @@ export default function GlobalDataTable({ title, columns, items }) {
       key={theme}
       className="my-1 rounded-2xl p-2 shadow-md"
       style={{ backgroundColor: colors.card }}>
-      <Text className="mb-3 text-xl font-bold" style={{ color: colors.text }}>
-        {title}
-      </Text>
-
+      <View className='flex-row justify-between'>
+        <Text className="mb-3 text-xl font-bold" style={{ color: colors.text }}>
+          {title}
+        </Text>
+        {route && <FontAwesome6 name="arrow-right-from-bracket" size={20} color= {colors.text} onPress={() => navigation.navigate(route)} />}
+      </View>
       <DataTable>
         {/* Header */}
         <DataTable.Header

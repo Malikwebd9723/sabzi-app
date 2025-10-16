@@ -8,7 +8,7 @@ import GlobalDataTable from 'components/GlobalDataTable';
 
 export default function Dashboard() {
   const { colors, theme } = useTheme();
-
+  
   const items = [
     { name: 'Apple', orders: 5, total: 22, picked: 10, pending: 12 },
     { name: 'Mangos', orders: 3, total: 29, picked: 6, pending: 23 },
@@ -138,7 +138,7 @@ export default function Dashboard() {
       </View>
       <GlobalDataTable title="Items to Pick" columns={columns} items={items} />
       <GlobalDataTable title="Recent Orders" columns={orderColumns} items={orderItems} />
-      <GlobalDataTable title="Recent Transactions" columns={transactionColumns} items={transactionItems} />
+      <GlobalDataTable title="Recent Transactions" columns={transactionColumns} items={transactionItems} route={"transactionHistory"} />
     </ScrollView>
   );
 }

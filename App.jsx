@@ -33,7 +33,7 @@ const paperTheme = {
 
   return (
     <PaperProvider theme={paperTheme}>
-      <View className="flex-1">
+      <View className="flex-1" style={{ backgroundColor: colors.background }}>
         <StatusBar
           backgroundColor={colors.background}
           barStyle={theme === "dark" ? "light-content" : "dark-content"}
