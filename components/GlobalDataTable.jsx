@@ -23,7 +23,7 @@ export default function GlobalDataTable({ title, columns, items, route }) {
       className="my-1 rounded-2xl p-2 shadow-md"
       style={{ backgroundColor: colors.card }}>
       <View className='flex-row justify-between'>
-        <Text className="mb-3 text-xl font-bold" style={{ color: colors.text }}>
+        <Text className="mb-3 text-xl font-bold flex-1" style={{ color: colors.text }}>
           {title}
         </Text>
         {route && <FontAwesome6 name="arrow-right-from-bracket" size={20} color= {colors.text} onPress={() => navigation.navigate(route)} />}
