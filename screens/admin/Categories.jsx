@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "context/ThemeContext";
+import { useNavigation } from "@react-navigation/native";
 
 const categoriesData = [
   { id: 1, name: "Vegetables", items: 20, image: require("../../assets/vegetables.jpg") },
@@ -30,7 +31,7 @@ export default function Categories() {
   const [filteredData, setFilteredData] = useState(categoriesData);
   const [loading, setLoading] = useState(true);
   const shimmerValue = new Animated.Value(0);
-
+  const navigation = useNavigation();
   useEffect(() => {
     // Fake loading delay
     const timer = setTimeout(() => {
@@ -65,7 +66,7 @@ export default function Categories() {
     <Pressable
       className="w-[30%] mx-auto my-3 items-center justify-center rounded-2xl p-3"
       style={{ backgroundColor: colors.card }}
-      onPress={() => Alert.alert(item.name, `You have ${item.items} items in this category.`)}
+      onPress={() =>navigation.navigate("categoryDetail")}
     >
       <Image source={item.image} className="w-20 h-20 rounded-full mb-2" resizeMode="cover" />
       <Text className="font-semibold text-center" style={{ color: colors.text }}>

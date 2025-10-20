@@ -2,7 +2,6 @@
 import { useTheme } from 'context/ThemeContext';
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 import GlobalDataTable from 'components/GlobalDataTable';
 
