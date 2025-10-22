@@ -58,7 +58,7 @@ export default function Dashboard() {
       <View className="flex-1 py-2">
         {/* Top Stats Card */}
         <View
-          className="flex-row justify-between rounded-2xl p-2 shadow-md"
+          className="flex-row justify-between rounded-2xl p-2 shadow-sm"
           style={{ backgroundColor: colors.card }}>
           {/* Left — Today’s Order */}
           <View
@@ -136,7 +136,7 @@ export default function Dashboard() {
         </View>
       </View>
       <GlobalDataTable title="Items to Pick" columns={columns} items={items} />
-      <GlobalDataTable title="Recent Orders" columns={orderColumns} items={orderItems} />
+      <GlobalDataTable title="Recent Orders" columns={orderColumns} items={orderItems} route={"ordersScreen"}/>
       <GlobalDataTable title="Recent Transactions" columns={transactionColumns} items={transactionItems} route={"transactionHistory"} />
     </ScrollView>
   );

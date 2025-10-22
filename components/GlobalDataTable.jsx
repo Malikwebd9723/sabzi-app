@@ -3,12 +3,12 @@ import { View, Text, Alert } from 'react-native';
 import { DataTable } from 'react-native-paper';
 import { useTheme } from 'context/ThemeContext';
 import { FontAwesome6 } from '@expo/vector-icons';
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native';
 export default function GlobalDataTable({ title, columns, items, route }) {
   const { colors, theme } = useTheme(); // get active theme
   const itemsPerPageList = [10, 20, 30, 40, 50]; // options for items per page
   const [page, setPage] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageList[0]);
+  const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageList[0] || 10);
   const navigation = useNavigation();
   const from = page * itemsPerPage;
   const to = Math.min((page + 1) * itemsPerPage, items.length);
@@ -20,13 +20,20 @@ export default function GlobalDataTable({ title, columns, items, route }) {
   return (
     <View
       key={theme}
-      className="my-1 rounded-2xl p-2 shadow-md"
+      className="my-1 rounded-2xl p-2 shadow-sm"
       style={{ backgroundColor: colors.card }}>
-      <View className='flex-row justify-between'>
-        <Text className="mb-3 text-xl font-bold flex-1" style={{ color: colors.text }}>
+      <View className="flex-row justify-between">
+        <Text className="mb-3 flex-1 text-xl font-bold" style={{ color: colors.text }}>
           {title}
         </Text>
-        {route && <FontAwesome6 name="arrow-right-from-bracket" size={20} color= {colors.text} onPress={() => navigation.navigate(route)} />}
+        {route && (
+          <FontAwesome6
+            name="arrow-right-from-bracket"
+            size={20}
+            color={colors.text}
+            onPress={() => navigation.navigate(route)}
+          />
+        )}
       </View>
       <DataTable>
         {/* Header */}
