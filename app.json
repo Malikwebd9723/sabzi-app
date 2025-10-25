@@ -3,6 +3,8 @@
     "name": "my-expo-app",
     "slug": "my-expo-app",
     "version": "1.0.0",
+    "sdkVersion": "54.0.0",
+    "platforms": ["android"],
     "web": {
       "favicon": "./assets/favicon.png"
     },
@@ -36,11 +38,11 @@
         "projectId": "a7645f51-ceee-4e3e-915f-62d7ab4bf30b"
       }
     },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
     "updates": {
       "url": "https://u.expo.dev/a7645f51-ceee-4e3e-915f-62d7ab4bf30b"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
     }
   }
 }
